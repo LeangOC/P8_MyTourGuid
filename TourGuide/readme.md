@@ -14,3 +14,14 @@
 # dev1
 1.  Installation des trois dépendances avec un chemin relatif (./libs)
 
+# dev2
+- Activer le test nearAllAttractions() de  TestRewardsService ( voir Solution.md)
+1.    Erreur :   ConcurrentModificationException : RewardsService.calculateRewards(RewardsService.java:43)
+2.    Erreur :  "Expected :26  et  Actual : 1"
+
+- Activer le getTripDeals() de TestTourGuideService
+1. Erreur :  org.opentest4j.AssertionFailedError:  Expected :10     Actual   :5
+
+- Activer les deux tests de TestPerformance:
+1. highVolumeTrackLocation: Time Elapsed: 8 seconds
+2. highVolumeGetRewards: Time Elapsed: 42 seconds.
