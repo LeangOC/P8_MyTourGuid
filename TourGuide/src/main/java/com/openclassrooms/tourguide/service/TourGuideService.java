@@ -1,6 +1,7 @@
 package com.openclassrooms.tourguide.service;
 
 import com.openclassrooms.tourguide.helper.InternalTestHelper;
+import com.openclassrooms.tourguide.model.NearbyAttraction;
 import com.openclassrooms.tourguide.tracker.Tracker;
 import com.openclassrooms.tourguide.user.User;
 import com.openclassrooms.tourguide.user.UserReward;
@@ -117,15 +118,46 @@ public List<Provider> getTripDeals(User user) {
 		return visitedLocation;
 	}
 
-	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for (Attraction attraction : gpsUtil.getAttractions()) {
-			if (rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
-			}
-		}
+	public List<NearbyAttraction> getNearByAttractions(VisitedLocation visitedLocation) {
 
-		return nearbyAttractions;
+		return gpsUtil.getAttractions().stream()
+				.sorted((a1, a2) -> Double.compare(
+						getDistance(new Location(a1.latitude, a1.longitude), visitedLocation.location),
+						getDistance(new Location(a2.latitude, a2.longitude), visitedLocation.location)
+				))
+				.limit(5)
+				.map(a -> {
+					double distance = getDistance(
+							new Location(a.latitude, a.longitude),
+							visitedLocation.location);
+
+
+					int rewardPoints = rewardsService.getRewardPointsForUserId(a, visitedLocation.userId);
+
+					return new NearbyAttraction(
+							a.attractionName,
+							a.latitude,
+							a.longitude,
+							visitedLocation.location.latitude,
+							visitedLocation.location.longitude,
+							distance,
+							rewardPoints
+					);
+				})
+				.collect(Collectors.toList());
+	}
+
+	private double getDistance(Location loc1, Location loc2) {
+		double lat1 = Math.toRadians(loc1.latitude);
+		double lon1 = Math.toRadians(loc1.longitude);
+		double lat2 = Math.toRadians(loc2.latitude);
+		double lon2 = Math.toRadians(loc2.longitude);
+
+		double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)
+				+ Math.cos(lat1) * Math.cos(lat2)
+				* Math.cos(lon1 - lon2));
+
+		return angle * 3958.8;  // distance en miles
 	}
 
 	private void addShutDownHook() {

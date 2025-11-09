@@ -25,3 +25,14 @@
 - Activer les deux tests de TestPerformance:
 1. highVolumeTrackLocation: Time Elapsed: 8 seconds
 2. highVolumeGetRewards: Time Elapsed: 42 seconds.
+
+# dev2b :
+Activation getNearbyAttractions() de TestTourGuideService 
+org.opentest4j.AssertionFailedError:
+                            Expected :5
+                            Actual   :0
+
+1. Refactorer TourGuideController, TestTourGuideService.getNearbyAttractions , service.getNearByAttractions,
+2. Implémentation service.getDistance , model.NearbyAttraction et RewardsService.getRewardPointsForUserId
+3. Test getNearByAttractions OK
+4. Verification endpoints OK
