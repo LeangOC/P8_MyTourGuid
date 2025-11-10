@@ -39,6 +39,19 @@ org.opentest4j.AssertionFailedError:
 
 Requête sous Postman GET : http://localhost:8080/getNearbyAttractions?userName=internalUser0
 
-<img width="706" height="828" alt="image" src="https://github.com/user-attachments/assets/9fc71183-f121-465e-b3b9-63d77d521f4a" />
+<img width="706" height="828" alt="image" src="https://github.com/user-attachments/assets/9fc71183-f121-465e-b3b9-63d77d521f4a" />  
+
+# dev4 
+Test de performance avant optimisation : 
+  - le nombre d’utilisateurs : 100  
+    <img width="711" height="147" alt="image" src="https://github.com/user-attachments/assets/c0469913-4328-4214-a29b-8f97c7ae5b97" />
+
+- le nombre d’utilisateurs : 1000  
+  <img width="707" height="141" alt="image" src="https://github.com/user-attachments/assets/c3e5d46a-7b54-426b-917e-b37162106b48" />
+
+- le nombre d’utilisateurs : 10000  
+  <img width="864" height="389" alt="image" src="https://github.com/user-attachments/assets/47d9412b-b1ff-44b2-be32-86b4fba375a8" />
+  
+ 
 
 
