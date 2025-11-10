@@ -26,7 +26,7 @@
 1. highVolumeTrackLocation: Time Elapsed: 8 seconds
 2. highVolumeGetRewards: Time Elapsed: 42 seconds.
 
-# dev2b :
+# dev3 :
 Activation getNearbyAttractions() de TestTourGuideService 
 org.opentest4j.AssertionFailedError:
                             Expected :5
@@ -35,4 +35,10 @@ org.opentest4j.AssertionFailedError:
 1. Refactorer TourGuideController, TestTourGuideService.getNearbyAttractions , service.getNearByAttractions,
 2. Implémentation service.getDistance , model.NearbyAttraction et RewardsService.getRewardPointsForUserId
 3. Test getNearByAttractions OK
-4. Verification endpoints OK
+4. Verification endpoints OK  
+
+Requête sous Postman GET : http://localhost:8080/getNearbyAttractions?userName=internalUser0
+
+<img width="706" height="828" alt="image" src="https://github.com/user-attachments/assets/9fc71183-f121-465e-b3b9-63d77d521f4a" />
+
+
