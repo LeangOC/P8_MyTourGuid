@@ -46,12 +46,14 @@ Test de performance avant optimisation :
   - le nombre d’utilisateurs : 100  
     <img width="711" height="147" alt="image" src="https://github.com/user-attachments/assets/c0469913-4328-4214-a29b-8f97c7ae5b97" />
 
-- le nombre d’utilisateurs : 1000  
+- le nombre d’utilisateurs : 1.000  
   <img width="707" height="141" alt="image" src="https://github.com/user-attachments/assets/c3e5d46a-7b54-426b-917e-b37162106b48" />
 
-- le nombre d’utilisateurs : 10000  
+- le nombre d’utilisateurs : 10.000  
   <img width="864" height="389" alt="image" src="https://github.com/user-attachments/assets/47d9412b-b1ff-44b2-be32-86b4fba375a8" />
   
- 
+ - le nombre d'utilisateurs : 100.000  
+   <img width="1292" height="630" alt="image" src="https://github.com/user-attachments/assets/3c6760de-f6db-46ea-bc62-ca59ed671118" />
+
 
 
