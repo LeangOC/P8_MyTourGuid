@@ -16,7 +16,7 @@ https://openclassrooms.com/fr/courses/5684021-be-more-efficient-with-advanced-ja
 Copy d'écran de Jshell :  
 <img width="610" height="299" alt="image" src="https://github.com/user-attachments/assets/b673934b-89a0-4892-935b-3c67091790a4" />
 
-# Future
+# Future - ExecutorService 
 1. # Future<Integer> aSquaredFuture = executorService.submit(() -> a * a);
    # Future<Integer> bSquaredFuture = executorService.submit(() -> b * b);
    => On lance deux calculs (Threads Worker ou Pool ) a² et b² en **parallèle** grâce à un ExecutorService
@@ -59,4 +59,50 @@ Et si on veut "arrêter un seul thread":
     // Tu peux arrêter indépendamment chaque pool
     poolA.shutdown();  // Arrête le thread A
     poolB.shutdown();  // Arrête le thread B
+
+# CompleteFuture vs Future
+
+    Integer a = 2;
+    Integer b = 2;
+
+    CompletableFuture<Double> cFuture =
+    CompletableFuture.supplyAsync(() -> a * a)
+        .thenCombine(
+            CompletableFuture.supplyAsync(() -> b * b),
+            (aSquared, bSquared) -> Math.sqrt(aSquared + bSquared)
+        );
+
+    cFuture.get();
+
+=> supplyAsync(() -> a * a)
+Crée un CompletableFuture qui calcule a² de manière asynchrone.  
+Idem pour b².  
+Ces deux appels s’exécutent en parallèle sans bloquer le thread principal.  
+
+=>thenCombine(...)
+Permet de combiner le résultat de deux CompletableFuture dès qu’ils sont tous les deux terminés.
+La fonction (aSquared, bSquared) -> Math.sqrt(aSquared + bSquared) s’exécute automatiquement quand les deux résultats sont disponibles
+
+Ce qu’il faut retenir :  
+Future : bonne première approche, mais limitée. On doit gérer manuellement l’attente des résultats.  
+CompletableFuture : plus moderne et puissant.  
+Permet de chaîner les calculs (thenApply, thenCombine, etc.)  
+Facilite la programmation réactive et non bloquante  
+Réduit le code répétitif  
+
+Exemple concret.
+comparer le temps d’exécution d’une même tâche :
+ - d’abord de façon séquentielle (1 seul thread)  
+<img width="322" height="150" alt="image" src="https://github.com/user-attachments/assets/32a6e988-6a78-475b-bfea-bc83165dcc6f" />
+<img width="400" height="123" alt="image" src="https://github.com/user-attachments/assets/106b9078-3b24-4bf5-a032-4fa955c9e512" />  
+
+ - puis en parallèle (avec plusieurs threads dans un ExecutorService)
+
+<img width="383" height="292" alt="image" src="https://github.com/user-attachments/assets/188c389a-4ffb-4d17-9dbd-1c839230583a" />
+<img width="443" height="265" alt="image" src="https://github.com/user-attachments/assets/be81773f-2453-4ab0-90ad-a0b1c6cdc472" />
+<img width="206" height="245" alt="image" src="https://github.com/user-attachments/assets/2f255546-05f3-4d00-ae97-282e6437db6f" />   
+  
+Conclusion:  
+Les 5 tâches durent environ 1 seconde au total, au lieu de 5 secondes !  
+(car elles sont exécutées en parallèle sur 5 threads différents).  
 
