@@ -40,6 +40,12 @@ TP1 et TP2 = vrais threads de travail
 TP = le thread principal qui orchestre et attend  
 .get() = une action de blocage, pas un thread supplémentaire  
 
+Conclusion entre Future et CompleteFuture:  
+Le ExecutorService() permet d'optimiser la vitesse de traitement en utilisant le multithreading .  
+Et tandis que Future() et CompleteFuture() se différencient par la façon de gérer le multithreading,   
+l'un manuel avec get qui peut bloquer le thread principal alors que l'autre de manière automatique   
+mais à la fin les deux arrivent bien à la même vitesse si je me trompe pas.  
+
 ps -L -p 12345 ( ou 12345 est le processus java )  
 Cela affiche tous les threads (LWP = Lightweight Processes) du processus Java  
 
