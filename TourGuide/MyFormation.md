@@ -25,3 +25,4 @@ Copy d'écran de Jshell :
    =>on bloque le thread principal avec get() jusqu’à ce que chaque calcul soit terminé.  
 3. # Double c = Math.sqrt(aSquared + bSquared);  
    =>Une fois qu’on a a² et b², on peut finalement calculer c = √(a² + b²)  
+   <img width="786" height="503" alt="image" src="https://github.com/user-attachments/assets/cba54b52-fda2-4ecd-89bc-48d132bd9285" />
