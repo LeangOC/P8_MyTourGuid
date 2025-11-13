@@ -25,7 +25,8 @@ Copy d'écran de Jshell :
    =>on bloque le thread principal avec get() jusqu’à ce que chaque calcul soit terminé.  
 3. # Double c = Math.sqrt(aSquared + bSquared);  
    =>Une fois qu’on a a² et b², on peut finalement calculer c = √(a² + b²)  
-   <img width="786" height="503" alt="image" src="https://github.com/user-attachments/assets/cba54b52-fda2-4ecd-89bc-48d132bd9285" />  
+   <img width="813" height="466" alt="image" src="https://github.com/user-attachments/assets/a4c9c07b-dc0b-4000-9a4e-9a074532c51b" />
+ 
 
 # Schéma simplifié de notion Thread Principal et worker ou pool
 TP (thread principal)  
@@ -38,3 +39,24 @@ TP (thread principal)
 TP1 et TP2 = vrais threads de travail  
 TP = le thread principal qui orchestre et attend  
 .get() = une action de blocage, pas un thread supplémentaire  
+
+ps -L -p 12345 ( ou 12345 est le processus java )  
+Cela affiche tous les threads (LWP = Lightweight Processes) du processus Java  
+
+<img width="817" height="530" alt="image" src="https://github.com/user-attachments/assets/50096c70-7e2a-4128-adb7-e8643e6902fe" />
+
+"main"(27837) → le thread principal
+"pool-1-thread-1", "pool-1-thread-2" → tes threads workers
+les autres → threads internes de la JVM (garbage collector, etc.)
+
+executorService.shutdown(); = > Termine toutes les tâches et ferme tout le pool
+
+Et si on veut "arrêter un seul thread":  
+
+    ExecutorService poolA = Executors.newSingleThreadExecutor();
+    ExecutorService poolB = Executors.newSingleThreadExecutor();
+
+    // Tu peux arrêter indépendamment chaque pool
+    poolA.shutdown();  // Arrête le thread A
+    poolB.shutdown();  // Arrête le thread B
+
