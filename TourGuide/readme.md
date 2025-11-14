@@ -58,4 +58,8 @@ Test de performance avant optimisation :
 # dev4b
 1. Creation Répertoire MyDoc
 
-
+# solution1 <= dev4b
+1. Mise en place le multithreads (ExecutorService) pour le test HhighVolumeTrackLocation() : pool max 300
+   a) Le nombre d'utilisateur : 1000      => Time Elapsed: 1 seconds
+   b) Le nombre d'utilisateur : 10.000    => Time Elapsed: 19 seconds
+   c) Le nombre d'utilisateur : 100.000   => Time Elapsed: 102 seconds
