@@ -63,3 +63,10 @@ Test de performance avant optimisation :
    a) Le nombre d'utilisateur : 1000      => Time Elapsed: 1 seconds
    b) Le nombre d'utilisateur : 10.000    => Time Elapsed: 19 seconds
    c) Le nombre d'utilisateur : 100.000   => Time Elapsed: 102 seconds
+
+
+# solution2
+1. Optimisation code highVolumeGetRewards()
+   a) Le nombre d'utilisateur : 1000      => Time Elapsed: 1 seconds
+   b) Le nombre d'utilisateur : 10.000    => Time Elapsed: 10 seconds
+   c) Le nombre d'utilisateur : 100.000   => Time Elapsed: 118 seconds
