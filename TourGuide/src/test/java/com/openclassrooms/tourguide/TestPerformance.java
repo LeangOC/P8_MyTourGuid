@@ -46,23 +46,29 @@ public class TestPerformance {
 	 */
 
 	//@Disabled
+	//@Disabled
 	@Test
 	public void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		// Users should be incremented up to 100,000, and test finishes within 15
 		// minutes
-		InternalTestHelper.setInternalUserNumber(100);
+		InternalTestHelper.setInternalUserNumber(1000);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 
-		List<User> allUsers = new ArrayList<>();
-		allUsers = tourGuideService.getAllUsers();
+		//List<User> allUsers = new ArrayList<>();
+		//allUsers = tourGuideService.getAllUsers();
 
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		for (User user : allUsers) {
-			tourGuideService.trackUserLocation(user);
-		}
+
+		//for (User user : allUsers) {
+		//	tourGuideService.trackUserLocation(user);
+		//}
+
+		// ?? appel optimisé : tracking en parallèle dans TourGuideService
+		tourGuideService.trackAllUsers();
+
 		stopWatch.stop();
 		tourGuideService.tracker.stopTracking();
 
@@ -70,6 +76,7 @@ public class TestPerformance {
 				+ TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
 		assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	}
+
 
 	//@Disabled
 	@Test
