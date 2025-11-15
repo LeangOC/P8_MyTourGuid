@@ -1,5 +1,5 @@
 package com.openclassrooms.tourguide.model;
-
+//DTO agrège plusieurs informations provenant de différentes sources ((User, Attraction, VisitedLocation )
 public class NearbyAttraction {
     public String attractionName;
     public double attractionLatitude;

@@ -75,3 +75,6 @@ Test de performance avant optimisation :
       Utilisateur 1000    => Time Elapsed: 467 seconds  => Time Elapsed: 1 seconds
       Utilisateur 10.000  => Time Elapsed: 4643 seconds => Time Elapsed: 10 seconds
       Utilisateur 100.000 => Time Elapsed: 80293 seconds => Time Elapsed: 100 seconds
+
+# solution3Prod
+1. Refactorer le Tracker 
