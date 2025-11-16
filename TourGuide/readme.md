@@ -60,9 +60,9 @@ Test de performance avant optimisation :
 
 
 # solution1Prod
-1.  Refactorer TourGuideService pour paralleliser le trackAllUsers
-2.  Dans test highVolumeTrackLoaction ,remplacer par la nouvelle méthode : tourGuideService.trackAllUsers();
-2. TestPerformance highVolumeTrackLoaction avant et après optimisation de TourGuideService:
+1.  Refactorer TourGuideService : ajout la méthode trackAllUsers pour le parallelism 
+2. Dans test highVolumeTrackLoaction ,remplacer par la nouvelle méthode : tourGuideService.trackAllUsers();
+3. TestPerformance highVolumeTrackLoaction avant et après optimisation de TourGuideService:
    Utilisateur 1000    => Time Elapsed: 79 seconds  => Time Elapsed: 1 seconds
    Utilisateur 10.000  => Time Elapsed: 776 seconds => Time Elapsed: 19 seconds
    Utilisateur 100.000 => Time Elapsed: 7770 seconds => Time Elapsed: 199 seconds

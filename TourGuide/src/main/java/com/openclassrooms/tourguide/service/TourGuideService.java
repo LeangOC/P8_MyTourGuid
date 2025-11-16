@@ -35,13 +35,13 @@ public class TourGuideService {
 	public final Tracker tracker;
 	boolean testMode = true;
 
-	// ?? Ajout : exécuteur interne pour le suivi des utilisateurs
+	// Ajout : exécuteur interne pour le suivi des utilisateurs
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 
-	// ?? Clé API TripPricer
+	// Clé API TripPricer
 	private static final String tripPricerApiKey = "test-server-api-key";
 
-	// ?? Utilisateurs internes (mémoire)
+	// Utilisateurs internes (mémoire)
 	private final Map<String, User> internalUserMap = new HashMap<>();
 
 	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
@@ -62,7 +62,7 @@ public class TourGuideService {
 	}
 
 	// =====================================================================
-	// ?? MÉTHODE AJOUTÉE : TRACKING PARALLÈLE DE TOUS LES UTILISATEURS
+	//  MÉTHODE AJOUTÉE : TRACKING PARALLÈLE DE TOUS LES UTILISATEURS
 	// =====================================================================
 	public void trackAllUsers() {
 		List<User> users = getAllUsers();
@@ -74,14 +74,14 @@ public class TourGuideService {
 		CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
 	}
 
-	// ?? Permet d’arrêter proprement le pool
+	// Permet d’arrêter proprement le pool
 	public void shutdown() {
 		executor.shutdown();
 		tracker.stopTracking();
 	}
 
 	// =====================================================================
-	// ?? MÉTHODES EXISTANTES
+	// MÉTHODES EXISTANTES
 	// =====================================================================
 
 	public List<UserReward> getUserRewards(User user) {
@@ -175,7 +175,7 @@ public class TourGuideService {
 	}
 
 	// =====================================================================
-	// ?? UTILITAIRES
+	// UTILITAIRES
 	// =====================================================================
 
 	private double getDistance(Location loc1, Location loc2) {
@@ -200,7 +200,7 @@ public class TourGuideService {
 	}
 
 	// =====================================================================
-	// ?? INITIALISATION (Tests OC)
+	// INITIALISATION (Tests OC)
 	// =====================================================================
 
 	private void initializeInternalUsers() {
