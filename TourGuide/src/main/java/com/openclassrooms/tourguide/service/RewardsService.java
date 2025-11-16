@@ -19,6 +19,7 @@ public class RewardsService {
 
 	private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
 
+	//private int defaultProximityBuffer = 10;
 	private int defaultProximityBuffer = 10;
 	private int proximityBuffer = defaultProximityBuffer;
 	private int attractionProximityRange = 200;
@@ -26,7 +27,7 @@ public class RewardsService {
 	private final GpsUtil gpsUtil;
 	private final RewardCentral rewardsCentral;
 
-	// 🔥 Pool interne pour paralléliser les récompenses
+	// Pool interne pour paralléliser les récompenses
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 
 	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
@@ -35,7 +36,7 @@ public class RewardsService {
 	}
 
 	// =====================================================================
-	// 🔧 Paramètres de proximité
+	//  Paramètres de proximité
 	// =====================================================================
 
 	public void setProximityBuffer(int proximityBuffer) {
@@ -47,7 +48,7 @@ public class RewardsService {
 	}
 
 	// =====================================================================
-	// 🔥 MÉTHODE 1 : VERSION SYNCHRONE ORIGINALE (conservée)
+	//  MÉTHODE 1 : VERSION SYNCHRONE EXISTANTE
 	// =====================================================================
 	public void calculateRewards(User user) {
 
@@ -77,7 +78,7 @@ public class RewardsService {
 	}
 
 	// =====================================================================
-	// 🔥 MÉTHODE 2 : VERSION ASYNCHRONE POUR UN UTILISATEUR
+	// MÉTHODE 2 : VERSION ASYNCHRONE POUR UN UTILISATEUR
 	// =====================================================================
 	public CompletableFuture<Void> calculateRewardsAsync(User user) {
 
@@ -118,7 +119,7 @@ public class RewardsService {
 	}
 
 	// =====================================================================
-	// 🔥 MÉTHODE 3 : VERSION BATCH — À UTILISER POUR LE TEST DE PERFORMANCE
+	// MÉTHODE 3 : VERSION BATCH — À UTILISER POUR LE TEST DE PERFORMANCE
 	// =====================================================================
 	public void calculateRewardsForAllUsers(List<User> users) {
 
@@ -130,7 +131,7 @@ public class RewardsService {
 	}
 
 	// =====================================================================
-	// 🧮 UTILITAIRES
+	//  UTILITAIRES
 	// =====================================================================
 
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {

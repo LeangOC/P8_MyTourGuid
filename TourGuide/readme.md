@@ -32,7 +32,7 @@ org.opentest4j.AssertionFailedError:
                             Expected :5
                             Actual   :0
 
-1. Refactorer TourGuideController, TestTourGuideService.getNearbyAttractions , service.getNearByAttractions,
+1. Refactoriser TourGuideController, TestTourGuideService.getNearbyAttractions , service.getNearByAttractions,
 2. Implémentation service.getDistance , model.NearbyAttraction et RewardsService.getRewardPointsForUserId
 3. Test getNearByAttractions OK
 4. Verification endpoints OK  
@@ -60,7 +60,7 @@ Test de performance avant optimisation :
 
 
 # solution1Prod
-1.  Refactorer TourGuideService : Ajout trackAllUsers() pour tracking parallèle de tous les utilisateurs
+1.  Refactoriser TourGuideService : Ajout trackAllUsers() pour tracking parallèle de tous les utilisateurs
 2.  Dans test highVolumeTrackLoaction ,remplacer par la nouvelle méthode : tourGuideService.trackAllUsers();
 3. TestPerformance highVolumeTrackLoaction avant et après optimisation de TourGuideService:
    Utilisateur 1000    => Time Elapsed: 79 seconds  => Time Elapsed: 1 seconds
@@ -77,6 +77,9 @@ Test de performance avant optimisation :
       Utilisateur 100.000 => Time Elapsed: 80293 seconds => Time Elapsed: 100 seconds
 
 # solution3Prod
-1. Refactorer le Tracker 
-2. Désactiver le Tracker en mode test : refactorer TourGuideService.
-3. Pas de régressivité au niveau de test de performance.
+1. Refactoriser le Tracker 
+2. Désactiver le Tracker en mode test 
+3. Refactoriser TourGuideService.
+4. Refactoriser de ton TourGuideController
+5. Pas de régressivité au niveau de test de performance.
+
