@@ -55,9 +55,11 @@ public class TourGuideService {
 			logger.debug("Initializing users");
 			initializeInternalUsers();
 			logger.debug("Finished initializing users");
+			//  NE PAS démarrer le tracker en mode test
+			this.tracker = null;
+		} else {
+			this.tracker = new Tracker(this);
 		}
-
-		tracker = new Tracker(this);
 		addShutDownHook();
 	}
 
@@ -74,10 +76,15 @@ public class TourGuideService {
 		CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
 	}
 
-	// ?? Permet d’arrêter proprement le pool
+	//  Permet d’arrêter proprement le pool
 	public void shutdown() {
+		try {
+			if (tracker != null) {
+				tracker.stopTracking();
+			}
+		} catch (Exception ignored) {}
+
 		executor.shutdown();
-		tracker.stopTracking();
 	}
 
 
@@ -190,11 +197,7 @@ public class TourGuideService {
 	}
 
 	private void addShutDownHook() {
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			public void run() {
-				shutdown();
-			}
-		});
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> shutdown()));
 	}
 
 	// =====================================================================

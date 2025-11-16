@@ -78,3 +78,5 @@ Test de performance avant optimisation :
 
 # solution3Prod
 1. Refactorer le Tracker 
+2. Désactiver le Tracker en mode test : refactorer TourGuideService.
+3. Pas de régressivité au niveau de test de performance.

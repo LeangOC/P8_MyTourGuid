@@ -72,7 +72,7 @@ public class TestPerformance {
 		tourGuideService.trackAllUsers();
 
 		stopWatch.stop();
-		tourGuideService.tracker.stopTracking();
+		//tourGuideService.tracker.stopTracking();
 
 		System.out.println("highVolumeTrackLocation: Time Elapsed: "
 				+ TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
@@ -101,7 +101,7 @@ public class TestPerformance {
 				u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()))
 		);
 
-		// 🔥 Optimisation : appel simple, parallélisation interne au service
+		// Optimisation : appel simple, parallélisation interne au service
 		rewardsService.calculateRewardsForAllUsers(allUsers);
 
 		for (User user : allUsers) {
