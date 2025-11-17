@@ -14,3 +14,6 @@
 # dev1
 1.  Installation des trois dépendances avec un chemin relatif (./libs)
 
+# dev1_ci <= dev1
+1. Mettre en place le Pipeline d'Integration Continue avec GitHub Actions. 
+
