@@ -83,3 +83,6 @@ Test de performance avant optimisation :
 4. Refactoriser de ton TourGuideController
 5. Pas de régressivité au niveau de test de performance.
 
+# SolutionP8
+1. Ajout le plugin de pour le rapport Jacoco
+
