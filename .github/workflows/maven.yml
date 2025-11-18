@@ -36,4 +36,4 @@ jobs:
       # 📌 Build Maven
       - name: Build with Maven
         working-directory: TourGuide
-        run: mvn -B package
+        run: mvn -B clean verify 
