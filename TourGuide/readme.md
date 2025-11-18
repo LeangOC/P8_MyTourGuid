@@ -17,4 +17,13 @@
 # dev1_ci <= dev1
 1. Mettre en place le Pipeline d'Integration Continue avec GitHub Actions. 
 2. creation fichier maven.xml dans .github/worklows/maven.xml avec -Dfile=libs/gpsUtil.jar
+3. La structure du projet  
+P8_MyTourGuid/
+ ├── .github/workflows/maven.yml
+ └── TourGuide/
+      ├── pom.xml
+      └── libs/
+          ├── gpsUtil.jar
+          ├── TripPricer.jar
+          └── RewardCentral.jar
 
