@@ -30,3 +30,4 @@ P8_MyTourGuid/
 Run avec Actions :    
 <img width="282" height="306" alt="image" src="https://github.com/user-attachments/assets/1ae4c65c-5d66-4bd7-a993-a73ab924c779" />  
 
+[![Java CI with Maven](https://github.com/LeangOC/P8_MyTourGuid/actions/workflows/maven.yml/badge.svg)](https://github.com/LeangOC/P8_MyTourGuid/actions/workflows/maven.yml)
