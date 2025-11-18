@@ -37,3 +37,11 @@ jobs:
       - name: Build with Maven
         working-directory: TourGuide
         run: mvn -B clean verify 
+
+      - name: Upload artifacts (JAR + test reports)
+        uses: actions/upload-artifact@v3
+        with:
+          name: tourguide-artifacts
+          path: |
+            TourGuide/target/*.jar
+            TourGuide/target/surefire-reports/
