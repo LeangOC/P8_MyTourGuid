@@ -2,12 +2,14 @@
 
 import java.util.List;
 
+import com.openclassrooms.tourguide.model.NearbyAttraction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 
 import com.openclassrooms.tourguide.service.TourGuideService;
@@ -17,50 +19,66 @@ import com.openclassrooms.tourguide.user.UserReward;
 import tripPricer.Provider;
 
 @RestController
-<span class="fc" id="L20">public class TourGuideController {</span>
+<span class="fc" id="L22">public class TourGuideController {</span>
 
 	@Autowired
 	TourGuideService tourGuideService;
 	
     @RequestMapping(&quot;/&quot;)
     public String index() {
-<span class="nc" id="L27">        return &quot;Greetings from TourGuide!&quot;;</span>
+<span class="nc" id="L29">        return &quot;Greetings from TourGuide!&quot;;</span>
     }
-    
-    @RequestMapping(&quot;/getLocation&quot;) 
-    public VisitedLocation getLocation(@RequestParam String userName) {
-<span class="nc" id="L32">    	return tourGuideService.getUserLocation(getUser(userName));</span>
+
+
+    @GetMapping(&quot;/getLocation&quot;)
+    public ResponseEntity&lt;?&gt; getLocation(@RequestParam String userName) {
+
+<span class="nc" id="L36">        User user = tourGuideService.getUser(userName);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L38">            return ResponseEntity.badRequest().body(&quot;Unknown user: &quot; + userName);</span>
+        }
+<span class="nc" id="L40">        VisitedLocation location = tourGuideService.getUserLocation(user);</span>
+<span class="nc" id="L41">        return ResponseEntity.ok(location);</span>
     }
-    
-    //  TODO: Change this method to no longer return a List of Attractions.
- 	//  Instead: Get the closest five tourist attractions to the user - no matter how far away they are.
- 	//  Return a new JSON object that contains:
-    	// Name of Tourist attraction, 
-        // Tourist attractions lat/long, 
-        // The user's location lat/long, 
-        // The distance in miles between the user's location and each of the attractions.
-        // The reward points for visiting each Attraction.
-        //    Note: Attraction reward points can be gathered from RewardsCentral
-    @RequestMapping(&quot;/getNearbyAttractions&quot;) 
-    public List&lt;Attraction&gt; getNearbyAttractions(@RequestParam String userName) {
-<span class="nc" id="L46">    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));</span>
-<span class="nc" id="L47">    	return tourGuideService.getNearByAttractions(visitedLocation);</span>
+
+
+@GetMapping(&quot;/getNearbyAttractions&quot;)
+public ResponseEntity&lt;?&gt; getNearbyAttractions(@RequestParam String userName) {
+
+<span class="nc" id="L48">    User user = tourGuideService.getUser(userName);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">    if (user == null) {</span>
+<span class="nc" id="L50">        return ResponseEntity.badRequest().body(&quot;Unknown user: &quot; + userName);</span>
     }
-    
-    @RequestMapping(&quot;/getRewards&quot;) 
-    public List&lt;UserReward&gt; getRewards(@RequestParam String userName) {
-<span class="nc" id="L52">    	return tourGuideService.getUserRewards(getUser(userName));</span>
+
+<span class="nc" id="L53">    VisitedLocation visitedLocation = tourGuideService.getUserLocation(user);</span>
+<span class="nc" id="L54">    List&lt;NearbyAttraction&gt; result = tourGuideService.getNearByAttractions(visitedLocation);</span>
+
+<span class="nc" id="L56">    return ResponseEntity.ok(result);</span>
+}
+
+    @GetMapping(&quot;/getRewards&quot;)
+    public ResponseEntity&lt;?&gt; getRewards(@RequestParam String userName) {
+
+<span class="nc" id="L62">        User user = tourGuideService.getUser(userName);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L64">            return ResponseEntity.badRequest().body(&quot;Unknown user: &quot; + userName);</span>
+        }
+
+<span class="nc" id="L67">        List&lt;UserReward&gt; rewards = tourGuideService.getUserRewards(user);</span>
+<span class="nc" id="L68">        return ResponseEntity.ok(rewards);</span>
     }
-       
-    @RequestMapping(&quot;/getTripDeals&quot;)
-    public List&lt;Provider&gt; getTripDeals(@RequestParam String userName) {
-<span class="nc" id="L57">    	return tourGuideService.getTripDeals(getUser(userName));</span>
+
+    @GetMapping(&quot;/getTripDeals&quot;)
+    public ResponseEntity&lt;?&gt; getTripDeals(@RequestParam String userName) {
+
+<span class="nc" id="L74">        User user = tourGuideService.getUser(userName);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L76">            return ResponseEntity.badRequest().body(&quot;Unknown user: &quot; + userName);</span>
+        }
+
+<span class="nc" id="L79">        List&lt;Provider&gt; deals = tourGuideService.getTripDeals(user);</span>
+<span class="nc" id="L80">        return ResponseEntity.ok(deals);</span>
     }
-    
-    private User getUser(String userName) {
-<span class="nc" id="L61">    	return tourGuideService.getUser(userName);</span>
-    }
-   
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

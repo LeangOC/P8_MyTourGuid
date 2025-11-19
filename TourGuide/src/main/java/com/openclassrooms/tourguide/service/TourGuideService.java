@@ -35,6 +35,8 @@ public class TourGuideService {
 	public final Tracker tracker;
 	boolean testMode = true;
 
+
+
 	// Ajout : Exécuteur interne pour le suivi des utilisateurs
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 
@@ -51,14 +53,15 @@ public class TourGuideService {
 		Locale.setDefault(Locale.US);
 
 		if (testMode) {
-			logger.info("TestMode enabled et No Tracker");
+			logger.info("TestMode enabled");
 			logger.debug("Initializing users");
 			initializeInternalUsers();
 			logger.debug("Finished initializing users");
 			//  NE PAS démarrer le tracker en mode test
-			this.tracker = null;
+			this.tracker = new Tracker(this, false);// Tracker créé mais non démarré
+			logger.info("Tracker created but not started");
 		} else {
-			this.tracker = new Tracker(this);
+			this.tracker = new Tracker(this, true); // Tracker actif
 		}
 		addShutDownHook();
 	}

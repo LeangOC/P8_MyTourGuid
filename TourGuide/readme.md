@@ -85,4 +85,7 @@ Test de performance avant optimisation :
 
 # SolutionP8
 1. Ajout le plugin de pour le rapport Jacoco
+2. Erreurs de dégressivité sur les tests TestRewardsService, TestTourGuideService qui font appel au tourGuideService.tracker.stopTracking();
+ => Correction : En mode test , le Tracker est créé mais non démarrer ( pour qu'il soit pas tracker = null)
+
 
