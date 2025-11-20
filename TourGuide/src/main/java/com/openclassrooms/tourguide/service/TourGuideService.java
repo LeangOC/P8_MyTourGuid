@@ -57,7 +57,6 @@ public class TourGuideService {
 			logger.debug("Initializing users");
 			initializeInternalUsers();
 			logger.debug("Finished initializing users");
-			//  NE PAS démarrer le tracker en mode test
 			this.tracker = new Tracker(this, false);// Tracker créé mais non démarré
 			logger.info("Tracker created but not started");
 		} else {
