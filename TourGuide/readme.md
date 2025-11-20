@@ -87,5 +87,6 @@ Test de performance avant optimisation :
 1. Ajout le plugin de pour le rapport Jacoco
 2. Erreurs de dégressivité sur les tests TestRewardsService, TestTourGuideService qui font appel au tourGuideService.tracker.stopTracking();
  => Correction : En mode test , le Tracker est créé mais non démarrer ( pour qu'il soit pas tracker = null)
+3. Mise en place du Pipeline d'Intégration Continue avec GitHub Actions en utilisant le fichier maven.yml de la branch dev1_ci
 
 
