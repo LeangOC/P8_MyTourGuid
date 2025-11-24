@@ -21,9 +21,7 @@ public class Tracker extends Thread {
 	private boolean enabled;
 	public Tracker(TourGuideService tourGuideService,boolean enabled) {
 		this.tourGuideService = tourGuideService;
-
 		this.enabled = enabled;
-
 		if (enabled) {
 			executorService.submit(this); // Démarre seulement si enabled = true
 		}
