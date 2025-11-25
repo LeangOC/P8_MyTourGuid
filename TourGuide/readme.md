@@ -90,3 +90,4 @@ Test de performance avant optimisation :
 3. Mise en place du Pipeline d'Intégration Continue avec GitHub Actions en utilisant le fichier maven.yml de la branch dev1_ci.
 
 
+# Master merge from SolutionP8
