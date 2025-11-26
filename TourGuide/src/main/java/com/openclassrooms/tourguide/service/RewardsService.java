@@ -50,6 +50,7 @@ public class RewardsService {
 		List<VisitedLocation> userLocations = user.getVisitedLocations(); 
 			// service externe gpsUtil : Constructeur VisitedLocation(UUID userId, Location location, Date timeVisited)
 			// Et gpsUtil.Location(double latitude, double longitude) 
+			// la taille System.out.println("la taille de : " + userLocations.size()); = 3
 		    /* Pour ma compréhension : for (VisitedLocation v : userLocations) {
 			System.out.println("UserId : " + v.userId);
 			System.out.println("Location : " + v.location + "   lat=" + v.location.latitude + "   long=" + v.location.longitude);
@@ -59,7 +60,8 @@ public class RewardsService {
 		List<Attraction> attractions = gpsUtil.getAttractions();
 			//service externe gpsUtil : Constructeur 
 		    //Attraction(String attractionName, String city, String state, double latitude, double longitude)
-            /* Pour ma compréhension : for (Attraction a : attractions) {
+            // System.out.println("la taille de : " + attractions.size()); = 26
+			/* Pour ma compréhension : for (Attraction a : attractions) {
 			System.out.println(a.attractionName);} */
 			
 		for(VisitedLocation visitedLocation : userLocations) {
@@ -67,7 +69,8 @@ public class RewardsService {
 			
 			for(Attraction attraction : attractions) {
 				// deuxième itérations sur l'ensemble des Attractions existantes
-			
+				
+				// Pour ma compréhension System.out.println("Récompense: " + user.getUserRewards());
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
 					if(nearAttraction(visitedLocation, attraction)) {
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
