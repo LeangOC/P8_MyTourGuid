@@ -46,11 +46,21 @@ public class RewardsService {
 
 	//  MÉTHODE 1 : VERSION SYNCHRONE EXISTANTE
 	public void calculateRewards(User user) {
-		List<VisitedLocation> userLocations = user.getVisitedLocations();
+		
+		List<VisitedLocation> userLocations = user.getVisitedLocations(); 
+			// service externe gpsUtil : Constructeur VisitedLocation(UUID userId, Location location, Date timeVisited)
+			// Et gpsUtil.Location(double latitude, double longitude) 
+		
 		List<Attraction> attractions = gpsUtil.getAttractions();
+			//service externe gpsUtil : Constructeur 
+		    //Attraction(String attractionName, String city, String state, double latitude, double longitude)
 
 		for(VisitedLocation visitedLocation : userLocations) {
+			//1ère intération sur le parcourt de la liste des VisitedLocations de l'utilisateur
+			
 			for(Attraction attraction : attractions) {
+				// deuxième itérations sur l'ensemble des Attractions existantes
+			
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
 					if(nearAttraction(visitedLocation, attraction)) {
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
