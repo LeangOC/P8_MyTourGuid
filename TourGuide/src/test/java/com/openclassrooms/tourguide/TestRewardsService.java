@@ -58,7 +58,9 @@ public class TestRewardsService {
 		InternalTestHelper.setInternalUserNumber(1);	//Pour positionner la création d'utilisateur à 1 
 		
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
-				// création d' utilisateur et sa position ( VisitedLocation : longitude, latitude et une date aléatoire)
+				// création d' utilisateur User(UUID.randomUUID(), userName, phone, email);
+				// et ses trois VisitedLocation ( UserId, gptUtil.Location(latitud,longitude), RaddomTime)
+		        // stockage dans un Map pour utilisation plustard  avec internalUserMap.put(userName, user);
 
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
 			// Passer comme argument l'adresse du premier utilisateur de la liste à calculateRewards
