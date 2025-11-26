@@ -61,8 +61,8 @@ public class TestRewardsService {
 				// création d' utilisateur et sa position ( VisitedLocation : longitude, latitude et une date aléatoire)
 
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
-			// Passer comme argument l'adresse du premier utilisateur de la liste
-			// Et c
+			// Passer comme argument l'adresse du premier utilisateur de la liste à calculateRewards
+			// Et calcul de la récompense
 		
 		List<UserReward> userRewards = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));
 		tourGuideService.tracker.stopTracking();
