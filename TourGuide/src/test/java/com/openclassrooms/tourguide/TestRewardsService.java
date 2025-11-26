@@ -64,7 +64,7 @@ public class TestRewardsService {
 
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
 			// Passer comme argument l'adresse du premier utilisateur de la liste à calculateRewards
-			// Et calcul de la récompense
+			// Et calcul de sa récompense
 		
 		List<UserReward> userRewards = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));
 		tourGuideService.tracker.stopTracking();
