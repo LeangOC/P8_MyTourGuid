@@ -52,12 +52,18 @@ public class TestRewardsService {
 	public void nearAllAttractions() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
-		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
+		
+		rewardsService.setProximityBuffer(Integer.MAX_VALUE);	//Integer.MAX_VALUE= 2147483647
 
-		InternalTestHelper.setInternalUserNumber(1);
+		InternalTestHelper.setInternalUserNumber(1);	//Pour positionner la création d'utilisateur à 1 
+		
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
+				// création d' utilisateur et sa position ( VisitedLocation : longitude, latitude et une date aléatoire)
 
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
+			// Passer comme argument l'adresse du premier utilisateur de la liste
+			// Et c
+		
 		List<UserReward> userRewards = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));
 		tourGuideService.tracker.stopTracking();
 
