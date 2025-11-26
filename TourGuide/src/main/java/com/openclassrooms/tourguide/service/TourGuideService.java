@@ -255,6 +255,11 @@ public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
 			user.addToVisitedLocations(new VisitedLocation(user.getUserId(),
 					new Location(generateRandomLatitude(), generateRandomLongitude()),getRandomTime()));
 		});
+		/* Pour ma compréhension : for (VisitedLocation v : user.getVisitedLocations()) {
+			System.out.println("UserId : " + v.userId);
+			System.out.println("Latitude : " + v.location.latitude);
+			System.out.println("Longitude : " + v.location.longitude);
+			System.out.println("Date : " + v.timeVisited); */
 	}
 
 	private double generateRandomLongitude() {
