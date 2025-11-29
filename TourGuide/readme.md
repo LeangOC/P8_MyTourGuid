@@ -102,3 +102,4 @@ Test de performance avant optimisation :
 
 
 # Master merge from SolutionP8
+1. Et faire un peu de ménage sur les codes .
