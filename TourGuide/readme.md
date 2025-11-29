@@ -16,8 +16,19 @@
 
 # dev2
 - Activer le test nearAllAttractions() de  TestRewardsService ( voir Solution.md)
-1.    Erreur :   ConcurrentModificationException : RewardsService.calculateRewards(RewardsService.java:43)
-2.    Erreur :  "Expected :26  et  Actual : 1"
+  
+        1. Erreur :   ConcurrentModificationException : RewardsService.calculateRewards(RewardsService.java:43)
+  <img width="874" height="200" alt="image" src="https://github.com/user-attachments/assets/8c1ca214-c489-482a-9fe4-656b7748714e" />
+
+  
+        =>  remplacer dans la classer **User**  
+              private List<VisitedLocation> visitedLocations = new ArrayList<>()  
+              par  
+              private List<VisitedLocation> visitedLocations = new CopyOnWriteArrayList<>()
+
+        2. Erreur :  "Expected :26  et  Actual : 1"
+  <img width="867" height="186" alt="image" src="https://github.com/user-attachments/assets/e4b098ec-5391-4e51-9b1f-492435059b80" />
+
 
 - Activer le getTripDeals() de TestTourGuideService
 1. Erreur :  org.opentest4j.AssertionFailedError:  Expected :10     Actual   :5

@@ -46,11 +46,31 @@ public class RewardsService {
 
 	//  MÉTHODE 1 : VERSION SYNCHRONE EXISTANTE
 	public void calculateRewards(User user) {
-		List<VisitedLocation> userLocations = user.getVisitedLocations();
+		
+		List<VisitedLocation> userLocations = user.getVisitedLocations(); 
+			// service externe gpsUtil : Constructeur VisitedLocation(UUID userId, Location location, Date timeVisited)
+			// Et gpsUtil.Location(double latitude, double longitude) 
+			// la taille System.out.println("la taille de : " + userLocations.size()); = 3
+		    /* Pour ma compréhension : for (VisitedLocation v : userLocations) {
+			System.out.println("UserId : " + v.userId);
+			System.out.println("Location : " + v.location + "   lat=" + v.location.latitude + "   long=" + v.location.longitude);
+			System.out.println("TimeVisited : " + v.timeVisited);
+			System.out.println("-----");} */
+		
 		List<Attraction> attractions = gpsUtil.getAttractions();
-
+			//service externe gpsUtil : Constructeur 
+		    //Attraction(String attractionName, String city, String state, double latitude, double longitude)
+            // System.out.println("la taille de : " + attractions.size()); = 26
+			/* Pour ma compréhension : for (Attraction a : attractions) {
+			System.out.println(a.attractionName);} */
+			
 		for(VisitedLocation visitedLocation : userLocations) {
+			//1ère intération sur le parcourt de la liste des VisitedLocations de l'utilisateur
+			
 			for(Attraction attraction : attractions) {
+				// deuxième itérations sur l'ensemble des Attractions existantes
+				
+				// Pour ma compréhension System.out.println("Récompense: " + user.getUserRewards());
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
 					if(nearAttraction(visitedLocation, attraction)) {
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
