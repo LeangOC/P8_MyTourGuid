@@ -1,4 +1,4 @@
-# dev1b 
+# dev2 
 1. ConcurrentModificationException
    Cela veut dire que dans calculateRewards(), on modifies une liste pendant que l'on l'itères
    => d'après le cours "Modify Arrays on Multiple Threads with **CopyOnWriteArrayList**", il faut remplacer User():

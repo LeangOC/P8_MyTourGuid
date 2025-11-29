@@ -111,16 +111,7 @@ public class TourGuideService {
 		}
 	}
 
-	/* origin
-	public List<Provider> getTripDeals(User user) {
-		int cumulatativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
-		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(),
-				user.getUserPreferences().getNumberOfAdults(), user.getUserPreferences().getNumberOfChildren(),
-				user.getUserPreferences().getTripDuration(), cumulatativeRewardPoints);
-		user.setTripDeals(providers);
-		return providers;
-	}
-	 */
+	
 	// Refactoré
 	public List<Provider> getTripDeals(User user) {
 
@@ -158,18 +149,7 @@ public class TourGuideService {
 		rewardsService.calculateRewards(user);
 		return visitedLocation;
 	}
-/* Origin
-public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for (Attraction attraction : gpsUtil.getAttractions()) {
-			if (rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
-			}
-		}
 
-		return nearbyAttractions;
-	}
- */
 	// Refactoré
 	public List<NearbyAttraction> getNearByAttractions(VisitedLocation visitedLocation) {
 
