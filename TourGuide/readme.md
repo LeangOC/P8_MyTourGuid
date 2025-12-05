@@ -102,4 +102,8 @@ Test de performance avant optimisation :
 
 
 # Master merge from SolutionP8
+<<<<<<< HEAD
 1. Et faire un peu de ménage sur les codes .    
+=======
+1. Et faire un peu de ménage sur les codes .      
+>>>>>>> 51a1351bf6b28934e039fc0153c614f1704eca8b     
