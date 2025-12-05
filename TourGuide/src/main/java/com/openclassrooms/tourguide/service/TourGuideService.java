@@ -34,14 +34,13 @@ public class TourGuideService {
 	public final Tracker tracker;
 	boolean testMode = true;
 
-	// Ajout : Exécuteur interne pour le suivi des utilisateurs
+	// utiliser un pool auto-adaptatif "cached" : Autant de threads que nécessaire
 	private final ExecutorService executor = Executors.newCachedThreadPool();
 
-	//  Clé API TripPricer
-	//private static final String tripPricerApiKey = "test-server-api-key";
+	// Si on souhaite limiter le poolSize à maximum 300
+	/* int poolSize = Math.min(InternalTestHelper.getInternalUserNumber(), 300);
+	ExecutorService executor = Executors.newFixedThreadPool(poolSize); */
 
-	//used plus bas :Utilisateurs internes (mémoire)
-	// used plus bas : private final Map<String, User> internalUserMap = new HashMap<>();
 
 	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
 		this.gpsUtil = gpsUtil;

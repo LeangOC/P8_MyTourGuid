@@ -111,16 +111,6 @@ public class RewardsService {
 	}
 
 
-	// Ajout : VERSION BATCH — À UTILISER POUR LE TEST DE PERFORMANCE
-		public void calculateRewardsForAllUsers(List<User> users) {
-
-		List<CompletableFuture<Void>> futures = users.stream()
-				.map(this::calculateRewardsAsync)
-				.collect(Collectors.toList());
-
-		CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
-	}
-
 
 	//  UTILITAIRES
 
